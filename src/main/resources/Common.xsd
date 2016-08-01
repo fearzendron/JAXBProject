@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://cvc.com.br/model/common"
+        xmlns:tns="http://cvc.com.br/model/common" elementFormDefault="qualified">
+  <complexType name="Error">
+    <sequence>
+      <element name="code" type="string" minOccurs="0"/>
+      <element name="message" type="string" minOccurs="0"/>
+      <element name="errors" type="tns:StackError" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="fields" type="string" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="StackError">
+    <sequence>
+      <element name="code" type="string" minOccurs="0"/>
+      <element name="message" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="Pax">
+    <sequence>
+      <element name="id" type="int" minOccurs="0"/>
+      <element name="name" type="string" minOccurs="0"/>
+      <element name="surname" type="string" minOccurs="0"/>
+      <element name="gender" type="tns:gender" minOccurs="0"/>
+      <element name="birthday" type="date" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="HttpHeader">
+      <attribute name="name" type="string" />
+      <attribute name="value" type="string" />
+  </complexType>
+  
+  <simpleType name="gender">
+    <restriction base="string">
+      <enumeration value="MALE"/>
+      <enumeration value="FEMALE"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="status">
+    <restriction base="string">
+      <enumeration value="SUCCESS"/>
+      <enumeration value="ERROR"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="stringDate">
+    <annotation>
+      <documentation>Type of sale</documentation>
+    </annotation>
+    <restriction base="string">
+      <pattern value="\d{4}-\d{2}-\d{2}$"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="agentSign">
+    <annotation>
+      <documentation>Character that represents the system of origin</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="S"/>
+      <enumeration value="W"/>
+      <enumeration value="P"/>
+      <enumeration value="R"/>
+      <enumeration value="M"/>
+      <enumeration value="U"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="language">
+    <annotation>
+      <documentation>Prefered Language for the response. DefaultValue pt_BR</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="pt_BR"/>
+      <enumeration value="en_US"/>
+      <enumeration value="es_ES"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="currency">
+    <annotation>
+      <documentation>IATA currency code. DefaultValue BRL</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="BRL"/>
+      <enumeration value="USD"/>
+      <enumeration value="EUR"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="packageGroup">
+    <annotation>
+      <documentation>Type of sale</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="PACKAGE"/>
+      <enumeration value="STANDALONE"/>
+      <enumeration value="VHI"/>
+      <enumeration value="CORPORATE_SALES"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="source">
+    <annotation>
+      <documentation>Hotel source. List of String separeted by comma. DefaultValue AUTO</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="AUTO"/>
+      <enumeration value="CVC"/>
+      <enumeration value="EXPEDIA"/>
+      <enumeration value="JUNIPER"/>
+      <enumeration value="OMNIBEES"/>
+      <enumeration value="HOTELBEDS"/>
+      <enumeration value="CANGOOROO"/>
+    </restriction>
+  </simpleType>
+</schema>
